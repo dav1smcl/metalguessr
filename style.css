@@ -1,0 +1,72 @@
+body {
+    background-color: #000000;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+hr {
+    color: #ffffff;
+}
+
+header {
+    margin-top: 10px;
+}
+
+#sitelogo {
+    display: block; 
+    margin: 0 auto; 
+    width: 10%;
+}
+
+#puzzle {
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#board {
+    width: 350px;
+    height: 420px;
+    /* background-color: #ffffff; */
+    margin: 0 auto;
+    margin-top: 3px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile {
+    border: 2px solid #a0a0a0;
+    width: 60px;
+    height: 60px;
+    margin: 2.5px;
+
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.correct {
+    background-color: #4bb84b;
+    color: #ffffff;
+}
+
+.incorrect {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.present {
+    background-color: #c7b23c;
+    color: #ffffff;
+}
+
+.skip {
+    border: 2px solid #000000;
+}
