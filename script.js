@@ -18,6 +18,10 @@ window.onload = function() {
     initialize();
 }
 
+function endGame() {
+    return;
+}
+
 function initialize() {
     console.log("puzzles/" + solutionIndex + ".png");
     document.getElementById("puzzle").src = "puzzles/" + solutionIndex + ".png";
@@ -158,7 +162,7 @@ function update() {
         }
 
         if (correct == width) {
-            gameOver = true;
+            endGame()
         }
     }
 
@@ -176,7 +180,7 @@ function update() {
             }
         }
         if (correct == width) {
-            gameOver = true;
+            endGame()
         }
     }
 
