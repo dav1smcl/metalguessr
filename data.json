@@ -1,5 +1,4 @@
-{
-    "bands": [
+[
         {
             "name": "Anatomize",
             "genre": "Brutal Death Metal",
@@ -48,6 +47,5 @@
             "image": "https://www.metal-archives.com/images/3/5/4/0/3540476831_photo.jpg?4209",
             "link": "https://weepingdeath.bandcamp.com/"
         }
-    ]
-}
+]
 

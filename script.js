@@ -1,11 +1,22 @@
 // var solutionList = ["Anatomize", "Sanguisugabogg", "Psycho-Frame", "Enemy XII", "Valravn", "200 Stab Wounds", "Cryptworm", "Weeping"]
 
-var url = "https://raw.githubusercontent.com/dav1smcl/metalguessr/refs/heads/main/data.json?token=GHSAT0AAAAAAC5ZT77EL22P5XSO4QNPKCI2Z4XXQRA";
+// var solution = solutionList[Math.floor(Math.random() * solutionList.length)];
 
+// var solutionIndex = solutionList.indexOf(solution);
+
+var request = new Request("https://raw.githubusercontent.com/dav1smcl/metalguessr/refs/heads/main/data.json");
+var response = fetch(request).then(response => response.text());
+var data = JSON.parse(response);
+
+var solutionList = data;
+var solution = solutionList[Math.floor(Math.random() * solutionList.length)];
+var solutionIndex = solutionList.indexOf(solution);
 console.log(solution);
+
+solution = solution.toUpperCase();
+
 var height = 6;
 var width = solution.length;
-
 console.log(width);
 var row = 0;
 var col = 0;
