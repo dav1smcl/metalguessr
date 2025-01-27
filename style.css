@@ -38,6 +38,53 @@ header {
     flex-wrap: wrap;
 }
 
+#background {
+    display: block;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    z-index: 0;
+    opacity: 0;
+}
+
+#rect {
+    background-color: #000000;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 75%;
+    border-radius: 10px;
+    border: 2px solid #a0a0a0;
+    z-index: 1;
+    opacity: 0;
+}
+
+#answer {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    z-index: 2;
+    opacity: 0;
+}
+
+#solutionimg {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    opacity: 0;
+    width: 20%;
+}
+
 .tile {
     border: 2px solid #a0a0a0;
     width: 60px;

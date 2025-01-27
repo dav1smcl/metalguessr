@@ -19,7 +19,13 @@ window.onload = function() {
 }
 
 function endGame() {
-    return;
+    document.getElementById("background").style.opacity = 0.5;
+    document.getElementById("rect").style.opacity = 1;
+    document.getElementById("answer").innerText = solution;
+    document.getElementById("answer").style.opacity = 1;
+    document.getElementById("solutionimg").src = "puzzles/" + solutionIndex + ".png";
+    document.getElementById("solutionimg").style.opacity = 1;
+
 }
 
 function initialize() {
