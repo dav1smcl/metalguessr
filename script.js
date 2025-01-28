@@ -4,43 +4,73 @@
 
 // var solutionIndex = solutionList.indexOf(solution);
 
-var request = new Request("https://raw.githubusercontent.com/dav1smcl/metalguessr/refs/heads/main/data.json");
-var response = fetch(request).then(response => response.text());
-var data = JSON.parse(response);
+// var request = new Request("https://raw.githubusercontent.com/dav1smcl/metalguessr/refs/heads/main/data.json");
+// var response = fetch(request).then(response => response.text());
+// var data = JSON.parse(response);
 
-var solutionList = data;
-var solution = solutionList[Math.floor(Math.random() * solutionList.length)];
-var solutionIndex = solutionList.indexOf(solution);
-console.log(solution);
+// var solutionList = data;
+// var solution = solutionList[Math.floor(Math.random() * solutionList.length)];
+// var solutionIndex = solutionList.indexOf(solution);
+// console.log(solution);
 
-solution = solution.toUpperCase();
+// solution = solution.toUpperCase();
 
-var height = 6;
-var width = solution.length;
-console.log(width);
-var row = 0;
-var col = 0;
+async function preInitialize() {
+    try {
+        const response = await fetch("https://raw.githubusercontent.com/dav1smcl/metalguessr/refs/heads/main/data.json");
+        const solutionList = await response.json();
+        var solutionIndex = Math.floor(Math.random() * solutionList.length)
+        var band = solutionList[solutionIndex];
+        console.log(band);
+        console.log(band.link);
+        var solution = band.name;
+        var solution = solution.toUpperCase();
+        console.log(solutionIndex);
+        console.log(solution);
+    
+        var height = 6;
+        var width = solution.length;
+        console.log(width);
+    
+        var row = 0;
+        var col = 0;
+    
+        var gameOver = false;
 
-var gameOver = false;
-
-window.onload = function() {
-    initialize();
+        return { solution, solutionIndex, band, height, width, row, col, gameOver };
+    } catch (error) {
+        console.error(error);
+    }   
 }
 
-function endGame() {
+window.onload = async function() {
+    const result = await preInitialize();
+    if (result) {  
+        initialize(result);
+    }
+}
+
+function endGame( { solution, solutionIndex, band, height, width, row, col, gameOver } ) {
+    console.log(band)
     document.getElementById("background").style.opacity = 0.5;
     document.getElementById("rect").style.opacity = 1;
     document.getElementById("answer").innerText = solution;
     document.getElementById("answer").style.opacity = 1;
+    
     document.getElementById("solutionimg").src = "puzzles/" + solutionIndex + ".png";
     document.getElementById("solutionimg").style.opacity = 1;
 
+    document.getElementById("bandlink").href = band.link;
+    document.getElementById("bandlink").style.opacity = 1;
+    
+    document.getElementById("bandgenre").innerText = band.genre;
+    document.getElementById("bandgenre").style.opacity = 1;
 }
 
-function initialize() {
+function initialize( { solution, solutionIndex, band, height, width, row, col, gameOver } ) {
     console.log("puzzles/" + solutionIndex + ".png");
     document.getElementById("puzzle").src = "puzzles/" + solutionIndex + ".png";
-
+    
     var dashes = [];
     var spaces = [];
 
@@ -63,7 +93,7 @@ function initialize() {
             tile.classList.add("tile");
             document.getElementById("board").appendChild(tile);
             document.getElementById("board").style.width = ( (width * 64) + (width * 5) ).toString() + "px";
-
+            
             for (let d = 0; d < dashes.length; d++) {
                 if (dashes[d] == c) {
                     document.getElementById(r.toString() + "-" + c.toString()).innerText = "-";
@@ -79,12 +109,12 @@ function initialize() {
             }
         }
     }
-
+    
     document.addEventListener("keydown", (e) => {
         if (gameOver) return;
-
+        
         let currentTile = document.getElementById(row.toString() + "-" + col.toString());
-
+        
         if (("KeyA" <= e.code && e.code <= "KeyZ") || ("Digit0" <= e.code && e.code <= "Digit9")) {
             if (currentTile.classList.contains("skip")) {
                 col++;
@@ -109,7 +139,7 @@ function initialize() {
                 }
             }
         }
-
+        
         else if (e.code == "Backspace") {
             if (0 < col && col <= width) {
                 col--;
@@ -123,9 +153,9 @@ function initialize() {
             currentTile.innerText = "";
         }
         else if (e.code == "Enter") {
-            update();
+            update( { solution, solutionIndex, band, height, width, row, col, gameOver } );
         }
-
+        
         if (!gameOver && row == height) {
             gameOver = true;
             document.getElementById("answer").innerText = solution;
@@ -133,29 +163,29 @@ function initialize() {
     })
 }
 
-function update() {
+function update( { solution, solutionIndex, band, height, width, row, col, gameOver } ) {
     let guess = "";
     document.getElementById("answer").innerText = "";
-
+    
     for (let c = 0; c < width; c++) {
         let currentTile = document.getElementById(row.toString() + "-" + c.toString());
         let letter = currentTile.innerText;
         guess += letter;
     }
-
+    
     guess = guess.toLowerCase();
-
+    
     console.log(guess);
 
     if (guess.length != width) {
         document.getElementById("answer").innerText = "Please enter " + width.toString() + " letters";
         return;
     }
-
+    
     let correct = 0;
-
+    
     let letterCount = {};
-     
+    
     for (let i = 0; i < width; i++) {
         let letter = solution[i];
         if (letterCount[letter]) {
@@ -165,7 +195,7 @@ function update() {
             letterCount[letter] = 1;
         }
     }
-
+    
     for (let c = 0; c < width; c++) {
         let currentTile = document.getElementById(row.toString() + "-" + c.toString());
         let letter = currentTile.innerText;
@@ -174,10 +204,6 @@ function update() {
             currentTile.classList.add("correct");
             correct++;
             letterCount[letter]--;
-        }
-
-        if (correct == width) {
-            endGame()
         }
     }
 
@@ -194,11 +220,11 @@ function update() {
             currentTile.classList.add("absent");
             }
         }
-        if (correct == width) {
-            endGame()
-        }
     }
-
+    if (correct == width) {
+        endGame( { solution, solutionIndex, band, height, width, row, col, gameOver } )
+    }
+    
     row++;
     col = 0;
 }
