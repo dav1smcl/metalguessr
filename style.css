@@ -181,3 +181,8 @@ header {
 .skip {
     border: 2px solid #000000;
 }
+
+.space {
+    background-color: #000000;
+    color: #000000;
+}

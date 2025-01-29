@@ -108,6 +108,7 @@ function initialize( { solution, solutionIndex, band, height, width, gameOver } 
                 if (spaces[s] == c) {
                     document.getElementById(r.toString() + "-" + c.toString()).innerText = "\u00A0";
                     document.getElementById(r.toString() + "-" + c.toString()).classList.add("skip");
+                    document.getElementById(r.toString() + "-" + c.toString()).classList.add("space");
                 }
             }
         }
