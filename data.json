@@ -40,6 +40,11 @@
             "link": "https://weepingdeath.bandcamp.com/"
         },
         {
+            "name": "Theurgy",
+            "genre": "Technical Black Metal",
+            "link": "https://newstandardelite.bandcamp.com/album/theurgy-emanations-of-unconscious-luminescence"
+        },
+        {
             "name": "Corpse Pile",
             "genre": "Brutal Death Metal",
             "link": "https://corpsepile.bandcamp.com/album/holly-jolly-hardgore"
@@ -48,6 +53,16 @@
             "name": "Chat Pile",
             "genre": "Noise Rock",
             "link": "https://chatpile.bandcamp.com/"
+        },
+        {
+            "name": "PeelingFlesh",
+            "genre": "Brutal Slam Metal",
+            "link": "https://uniqueleaderrecords.bandcamp.com/album/the-g-code"
+        },
+        {
+            "name": "Blood Incantation",
+            "genre": "Progressive Death Metal",
+            "link": "https://bloodincantation.bandcamp.com/album/absolute-elsewhere"
         }
 ]
 
