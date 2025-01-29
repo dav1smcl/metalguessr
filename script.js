@@ -11,33 +11,33 @@
 // var solutionList = data;
 // var solution = solutionList[Math.floor(Math.random() * solutionList.length)];
 // var solutionIndex = solutionList.indexOf(solution);
-// console.log(solution);
+// //console.log(solution);
 
 // solution = solution.toUpperCase();
 
+var row = 0;
+var col = 0;
 async function preInitialize() {
     try {
         const response = await fetch("https://raw.githubusercontent.com/dav1smcl/metalguessr/refs/heads/main/data.json");
         const solutionList = await response.json();
         var solutionIndex = Math.floor(Math.random() * solutionList.length)
         var band = solutionList[solutionIndex];
-        console.log(band);
-        console.log(band.link);
+        //console.log(band);
+        //console.log(band.link);
         var solution = band.name;
         var solution = solution.toUpperCase();
-        console.log(solutionIndex);
-        console.log(solution);
+        //console.log(solutionIndex);
+        //console.log(solution);
     
         var height = 6;
         var width = solution.length;
-        console.log(width);
+        //console.log(width);
     
-        var row = 0;
-        var col = 0;
     
         var gameOver = false;
 
-        return { solution, solutionIndex, band, height, width, row, col, gameOver };
+        return { solution, solutionIndex, band, height, width, gameOver };
     } catch (error) {
         console.error(error);
     }   
@@ -50,12 +50,12 @@ window.onload = async function() {
     }
 }
 
-function endGame( { solution, solutionIndex, band, height, width, row, col, gameOver } ) {
-    console.log(band)
+function endGame( { solution, solutionIndex, band, height, width, gameOver } ) {
+    //console.log(band)
     document.getElementById("background").style.opacity = 0.5;
     document.getElementById("rect").style.opacity = 1;
-    document.getElementById("answer").innerText = solution;
-    document.getElementById("answer").style.opacity = 1;
+    document.getElementById("solutionans").innerText = solution;
+    document.getElementById("solutionans").style.opacity = 1;
     
     document.getElementById("solutionimg").src = "puzzles/" + solutionIndex + ".png";
     document.getElementById("solutionimg").style.opacity = 1;
@@ -65,10 +65,12 @@ function endGame( { solution, solutionIndex, band, height, width, row, col, game
     
     document.getElementById("bandgenre").innerText = band.genre;
     document.getElementById("bandgenre").style.opacity = 1;
+
+    // document.getElementById("close").style.opacity = 1;
 }
 
-function initialize( { solution, solutionIndex, band, height, width, row, col, gameOver } ) {
-    console.log("puzzles/" + solutionIndex + ".png");
+function initialize( { solution, solutionIndex, band, height, width, gameOver } ) {
+    //console.log("puzzles/" + solutionIndex + ".png");
     document.getElementById("puzzle").src = "puzzles/" + solutionIndex + ".png";
     
     var dashes = [];
@@ -84,8 +86,8 @@ function initialize( { solution, solutionIndex, band, height, width, row, col, g
             spaces.push(s);
         }
     }
-    console.log(dashes);
-    console.log(spaces);
+    //console.log(dashes);
+    //console.log(spaces);
     for (let r = 0; r < height; r++) {
         for (let c = 0; c < width; c++) {
             let tile = document.createElement("span");
@@ -114,7 +116,8 @@ function initialize( { solution, solutionIndex, band, height, width, row, col, g
         if (gameOver) return;
         
         let currentTile = document.getElementById(row.toString() + "-" + col.toString());
-        
+        //console.log(row.toString() + "-" + col.toString());
+        //console.log(e.code);
         if (("KeyA" <= e.code && e.code <= "KeyZ") || ("Digit0" <= e.code && e.code <= "Digit9")) {
             if (currentTile.classList.contains("skip")) {
                 col++;
@@ -153,34 +156,38 @@ function initialize( { solution, solutionIndex, band, height, width, row, col, g
             currentTile.innerText = "";
         }
         else if (e.code == "Enter") {
-            update( { solution, solutionIndex, band, height, width, row, col, gameOver } );
+            update( { solution, solutionIndex, band, height, width, gameOver } );
         }
         
         if (!gameOver && row == height) {
             gameOver = true;
             document.getElementById("answer").innerText = solution;
         }
+        //console.log(row.toString() + "-" + col.toString());
     })
 }
 
-function update( { solution, solutionIndex, band, height, width, row, col, gameOver } ) {
+function update( { solution, solutionIndex, band, height, width, gameOver } ) {
     let guess = "";
-    document.getElementById("answer").innerText = "";
-    
+    // document.getElementById("").innerText = "";
+    solution = solution.replace(/ /g, "\u00A0");
+    guess = guess.replace(/ /g, "\u00A0");
+    guess = guess.toLowerCase();
     for (let c = 0; c < width; c++) {
         let currentTile = document.getElementById(row.toString() + "-" + c.toString());
         let letter = currentTile.innerText;
         guess += letter;
+        //console.log(letter);
+    
     }
-    
-    guess = guess.toLowerCase();
-    
     console.log(guess);
-
+    console.log(solution);
+    
     if (guess.length != width) {
-        document.getElementById("answer").innerText = "Please enter " + width.toString() + " letters";
+        // document.getElementById("answer").innerText = "Please enter " + width.toString() + " letters";
         return;
     }
+    
     
     let correct = 0;
     
@@ -222,9 +229,11 @@ function update( { solution, solutionIndex, band, height, width, row, col, gameO
         }
     }
     if (correct == width) {
-        endGame( { solution, solutionIndex, band, height, width, row, col, gameOver } )
+        endGame( { solution, solutionIndex, band, height, width, gameOver } )
     }
-    
+    console.log(correct);
+    console.log(width); 
+    console.log(letterCount);
     row++;
     col = 0;
 }

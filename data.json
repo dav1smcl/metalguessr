@@ -2,50 +2,52 @@
         {
             "name": "Anatomize",
             "genre": "Brutal Death Metal",
-            "image": "https://www.metal-archives.com/images/3/5/4/0/3540546549_photo.jpg?4113",
             "link": "https://anatomize.bandcamp.com/music"
         },
         {
             "name": "Sanguisugabogg",
             "genre": "Death Metal",
-            "image": "https://www.metal-archives.com/images/3/5/4/0/3540456407_photo.jpeg?3110",
             "link": "http://sanguisugabogg.bandcamp.com/"
         },
         {
             "name": "Psycho-Frame",
             "genre": "Deathcore",
-            "image": "https://www.spirit-of-metal.com/les%20goupes/P/Psycho-Frame/pics/098c_1.jpg",
             "link": "https://psychoframedc.bandcamp.com/"
         },
         {
             "name": "Enemy XIII",
             "genre": "Black Metal",
-            "image": "https://www.metal-archives.com/images/3/5/4/0/3540558105_photo.jpg?4008",
             "link": "https://enemyxiii.bandcamp.com/music"
         },
         {
             "name": "Valravn",
             "genre": "Black Metal",
-            "image": "https://www.metal-archives.com/images/3/5/4/0/3540475030_photo.jpg?2900",
             "link": "https://primitivereaction.bandcamp.com/album/prey"
         },
         {
             "name": "200 Stab Wounds",
             "genre": "Death Metal",
-            "image": "https://www.metal-archives.com/images/3/5/4/0/3540465014_photo.jpg?4349",
             "link": "https://200stabwounds.bandcamp.com/"
         },
         {
             "name": "Cryptworm",
             "genre": "Death Metal",
-            "image": "https://www.metal-archives.com/images/3/5/4/0/3540425962_photo.jpeg?2802",
             "link": "https://cryptworm.bandcamp.com/"
         },
         {
             "name": "Weeping",
             "genre": "Death Metal",
-            "image": "https://www.metal-archives.com/images/3/5/4/0/3540476831_photo.jpg?4209",
             "link": "https://weepingdeath.bandcamp.com/"
+        },
+        {
+            "name": "Corpse Pile",
+            "genre": "Brutal Death Metal",
+            "link": "https://corpsepile.bandcamp.com/album/holly-jolly-hardgore"
+        },
+        {
+            "name": "Chat Pile",
+            "genre": "Noise Rock",
+            "link": "https://chatpile.bandcamp.com/"
         }
 ]
 
