@@ -26,6 +26,7 @@ var timeDifference = today - startDate;
 var daysPassed = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) - 1;
 console.log(daysPassed);
 
+
 async function preInitialize() {
     try {
         const response = await fetch("https://raw.githubusercontent.com/dav1smcl/metalguessr/refs/heads/main/data.json");
