@@ -2,7 +2,7 @@
 
 // var solution = solutionList[Math.floor(Math.random() * solutionList.length)];
 
-// var solutionIndex = solutionList.indexOf(solution);
+// var daysPassed = solutionList.indexOf(solution);
 
 // var request = new Request("https://raw.githubusercontent.com/dav1smcl/metalguessr/refs/heads/main/data.json");
 // var response = fetch(request).then(response => response.text());
@@ -10,24 +10,32 @@
 
 // var solutionList = data;
 // var solution = solutionList[Math.floor(Math.random() * solutionList.length)];
-// var solutionIndex = solutionList.indexOf(solution);
+// var daysPassed = solutionList.indexOf(solution);
 // //console.log(solution);
 
 // solution = solution.toUpperCase();
 
 var row = 0;
 var col = 0;
+
+var today = new Date();
+today.setHours(today.getHours() - 5);
+var startDate = new Date("January 30, 2025");
+startDate.setHours(startDate.getHours() - 5);
+var timeDifference = today - startDate;
+var daysPassed = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) - 1;
+console.log(daysPassed);
+
 async function preInitialize() {
     try {
         const response = await fetch("https://raw.githubusercontent.com/dav1smcl/metalguessr/refs/heads/main/data.json");
         const solutionList = await response.json();
-        var solutionIndex = Math.floor(Math.random() * solutionList.length)
-        var band = solutionList[solutionIndex];
+        var band = solutionList[daysPassed];
         //console.log(band);
         //console.log(band.link);
         var solution = band.name;
         var solution = solution.toUpperCase();
-        //console.log(solutionIndex);
+        //console.log(daysPassed);
         //console.log(solution);
         console.log(band);
 
@@ -38,7 +46,7 @@ async function preInitialize() {
     
         var gameOver = false;
 
-        return { solution, solutionIndex, band, height, width, gameOver };
+        return { solution, daysPassed, band, height, width, gameOver };
     } catch (error) {
         console.error(error);
     }   
@@ -51,14 +59,14 @@ window.onload = async function() {
     }
 }
 
-function endGame( { solution, solutionIndex, band, height, width, gameOver } ) {
+function endGame( { solution, daysPassed, band, height, width, gameOver } ) {
     //console.log(band)
     document.getElementById("background").style.opacity = 0.5;
     document.getElementById("rect").style.opacity = 1;
     document.getElementById("solutionans").innerText = solution;
     document.getElementById("solutionans").style.opacity = 1;
     
-    document.getElementById("solutionimg").src = "puzzles/" + solutionIndex + ".png";
+    document.getElementById("solutionimg").src = "puzzles/" + daysPassed + ".png";
     document.getElementById("solutionimg").style.opacity = 1;
 
     document.getElementById("bandlink").href = band.link;
@@ -70,9 +78,9 @@ function endGame( { solution, solutionIndex, band, height, width, gameOver } ) {
     // document.getElementById("close").style.opacity = 1;
 }
 
-function initialize( { solution, solutionIndex, band, height, width, gameOver } ) {
-    //console.log("puzzles/" + solutionIndex + ".png");
-    document.getElementById("puzzle").src = "puzzles/" + solutionIndex + ".png";
+function initialize( { solution, daysPassed, band, height, width, gameOver } ) {
+    //console.log("puzzles/" + daysPassed + ".png");
+    document.getElementById("puzzle").src = "puzzles/" + daysPassed + ".png";
     document.getElementById("puzzle").style.opacity = 1;
     
     var dashes = [];
@@ -159,7 +167,7 @@ function initialize( { solution, solutionIndex, band, height, width, gameOver } 
             currentTile.innerText = "";
         }
         else if (e.code == "Enter") {
-            update( { solution, solutionIndex, band, height, width, gameOver } );
+            update( { solution, daysPassed, band, height, width, gameOver } );
         }
         
         if (!gameOver && row == height) {
@@ -170,7 +178,7 @@ function initialize( { solution, solutionIndex, band, height, width, gameOver } 
     })
 }
 
-function update( { solution, solutionIndex, band, height, width, gameOver } ) {
+function update( { solution, daysPassed, band, height, width, gameOver } ) {
     let guess = "";
     // document.getElementById("").innerText = "";
     solution = solution.replace(/ /g, "\u00A0");
@@ -232,7 +240,7 @@ function update( { solution, solutionIndex, band, height, width, gameOver } ) {
         }
     }
     if (correct == width) {
-        endGame( { solution, solutionIndex, band, height, width, gameOver } )
+        endGame( { solution, daysPassed, band, height, width, gameOver } )
     }
     console.log(correct);
     console.log(width); 
