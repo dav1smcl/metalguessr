@@ -71,6 +71,7 @@ function endGame( { solution, solutionIndex, band, height, width, gameOver } ) {
 
 function initialize( { solution, solutionIndex, band, height, width, gameOver } ) {
     //console.log("puzzles/" + solutionIndex + ".png");
+    console.log(solution.id);
     document.getElementById("puzzle").src = "puzzles/" + solutionIndex + ".png";
     document.getElementById("puzzle").style.opacity = 1;
     

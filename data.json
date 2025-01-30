@@ -1,65 +1,78 @@
 [
         {
+            "id": 0,
             "name": "Anatomize",
             "genre": "Brutal Death Metal",
             "link": "https://anatomize.bandcamp.com/music"
         },
         {
+            "id": 1,
             "name": "Sanguisugabogg",
             "genre": "Death Metal",
             "link": "http://sanguisugabogg.bandcamp.com/"
         },
         {
+            "id": 2,
             "name": "Psycho-Frame",
             "genre": "Deathcore",
             "link": "https://psychoframedc.bandcamp.com/"
         },
         {
+            "id": 3,
             "name": "Enemy XIII",
             "genre": "Black Metal",
             "link": "https://enemyxiii.bandcamp.com/music"
         },
         {
+            "id": 4,
             "name": "Valravn",
             "genre": "Black Metal",
             "link": "https://primitivereaction.bandcamp.com/album/prey"
         },
         {
+            "id": 5,
             "name": "200 Stab Wounds",
             "genre": "Death Metal",
             "link": "https://200stabwounds.bandcamp.com/"
         },
         {
+            "id": 6,
             "name": "Cryptworm",
             "genre": "Death Metal",
             "link": "https://cryptworm.bandcamp.com/"
         },
         {
+            "id": 7,
             "name": "Weeping",
             "genre": "Death Metal",
             "link": "https://weepingdeath.bandcamp.com/"
         },
         {
+            "id": 8,
             "name": "Theurgy",
             "genre": "Technical Black Metal",
             "link": "https://newstandardelite.bandcamp.com/album/theurgy-emanations-of-unconscious-luminescence"
         },
         {
+            "id": 9,
             "name": "Corpse Pile",
             "genre": "Brutal Death Metal",
             "link": "https://corpsepile.bandcamp.com/album/holly-jolly-hardgore"
         },
         {
+            "id": 10,
             "name": "Chat Pile",
             "genre": "Noise Rock",
             "link": "https://chatpile.bandcamp.com/"
         },
         {
+            "id": 11,
             "name": "PeelingFlesh",
             "genre": "Brutal Slam Metal",
             "link": "https://uniqueleaderrecords.bandcamp.com/album/the-g-code"
         },
         {
+            "id": 12,
             "name": "Blood Incantation",
             "genre": "Progressive Death Metal",
             "link": "https://bloodincantation.bandcamp.com/album/absolute-elsewhere"
