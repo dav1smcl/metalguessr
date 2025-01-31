@@ -20,7 +20,7 @@ var col = 0;
 
 var today = new Date();
 today.setHours(today.getHours() - 5);
-var startDate = new Date("January 30, 2025");
+var startDate = new Date("January 31, 2025");
 startDate.setHours(startDate.getHours() - 5);
 var timeDifference = today - startDate;
 var daysPassed = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) - 1;
